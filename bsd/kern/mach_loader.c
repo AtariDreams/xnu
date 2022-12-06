@@ -2339,7 +2339,7 @@ load_segment(
 			return LOAD_BADMACHO;
 		}
 
-		if (!strncmp(scp->segname, "__LINKEDIT", 11) &&
+		if (!strncmp(scp->segname, "__LINKEDIT", 10) &&
 		    page_aligned(file_start) &&
 		    vm_map_page_aligned(file_start, vm_map_page_mask(map)) &&
 		    page_aligned(vm_start) &&

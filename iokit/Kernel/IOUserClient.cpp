@@ -197,8 +197,8 @@ IOMachPortHashList gIOMachPortHash[PORT_HASH_SIZE];
 void
 IOMachPortInitialize(void)
 {
-	for (size_t i = 0; i < PORT_HASH_SIZE; i++) {
-		SLIST_INIT(&gIOMachPortHash[i]);
+	for (auto & i : gIOMachPortHash) {
+		SLIST_INIT(&i);
 	}
 }
 

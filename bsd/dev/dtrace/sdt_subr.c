@@ -1170,12 +1170,12 @@ sdt_getargdesc(void *arg, dtrace_id_t id, void *parg, dtrace_argdesc_t *desc)
 	for (i = 0; sdt_args[i].sda_provider != NULL; i++) {
 		sdt_argdesc_t *a = &sdt_args[i];
 
-		if (strncmp(sdp->sdp_provider->sdtp_name, a->sda_provider, strlen(a->sda_provider) + 1) != 0) {
+		if (strncmp(sdp->sdp_provider->sdtp_name, a->sda_provider, strlen(a->sda_provider)) != 0) {
 			continue;
 		}
 
 		if (a->sda_name != NULL &&
-		    strncmp(sdp->sdp_name, a->sda_name, strlen(a->sda_name) + 1) != 0) {
+		    strncmp(sdp->sdp_name, a->sda_name, strlen(a->sda_name)) != 0) {
 			continue;
 		}
 

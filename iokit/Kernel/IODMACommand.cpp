@@ -1571,9 +1571,7 @@ IODMACommand::genIOVMSegments(uint32_t op,
 					misaligned |= (0 != (mask &  curSeg.fLength));
 				}
 				if (misaligned) {
-					if (misaligned) {
-						DEBG("cursor misaligned %qx:%qx\n", curSeg.fIOVMAddr, curSeg.fLength);
-					}
+					DEBG("cursor misaligned %qx:%qx\n", curSeg.fIOVMAddr, curSeg.fLength);
 					curSegValid = curSeg.fIOVMAddr = 0;
 					ret = kIOReturnNotAligned;
 					break;

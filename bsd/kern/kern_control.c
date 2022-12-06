@@ -1448,7 +1448,7 @@ ctl_ioctl(struct socket *so, u_long cmd, caddr_t data,
 		bcopy(data, &ctl_info, sizeof(ctl_info));
 		name_len = strnlen(ctl_info.ctl_name, MAX_KCTL_NAME);
 
-		if (name_len == 0 || name_len + 1 > MAX_KCTL_NAME) {
+		if (name_len == 0 || name_len > MAX_KCTL_NAME - 1) {
 			error = EINVAL;
 			break;
 		}

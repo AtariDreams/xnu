@@ -1141,7 +1141,7 @@ static void
 netagent_send_cellular_failed_event(struct netagent_wrapper *wrapper,
     pid_t pid, uuid_t proc_uuid)
 {
-	if (strncmp(wrapper->netagent->netagent_domain, "Cellular", NETAGENT_DOMAINSIZE) != 0) {
+	if (strncmp(wrapper->netagent->netagent_domain, "Cellular", NETAGENT_DOMAINSIZE - 1) != 0) {
 		return;
 	}
 

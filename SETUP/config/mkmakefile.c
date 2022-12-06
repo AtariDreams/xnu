@@ -622,10 +622,8 @@ void
 do_files(FILE *fp, const char *msg, char ext)
 {
 	struct file_list *tp;
-	int lpos, len = 0; /* dvw: init to 0 */
 
 	fprintf(fp, "%s", msg);
-	lpos = 8;
 	for (tp = ftab; tp != 0; tp = tp->f_next) {
 		if (tp->f_type == INVISIBLE) {
 			continue;
@@ -638,10 +636,8 @@ do_files(FILE *fp, const char *msg, char ext)
 		 * Our Makefile's aren't readable anyway.
 		 */
 
-		lpos = 8;
 		fprintf(fp, "\\\n\t");
 		put_source_file_name(fp, tp);
-		lpos += len + 1;
 	}
 	putc('\n', fp);
 }

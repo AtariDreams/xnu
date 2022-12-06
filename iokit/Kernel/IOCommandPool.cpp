@@ -160,7 +160,7 @@ IOCommandPool::getCommand(bool blockForCommand)
 	result = fSerializer->
 	    runAction(func, (void *) &command, (void *) blockForCommand);
 	if (kIOReturnSuccess == result) {
-		return OSSharedPtr<IOCommand>(command, OSNoRetain);
+		return {command, OSNoRetain};
 	} else {
 		return NULL;
 	}

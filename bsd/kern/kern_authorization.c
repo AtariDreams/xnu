@@ -206,7 +206,7 @@ kauth_register_scope(const char *identifier, kauth_scope_callback_t callback, vo
 	TAILQ_FOREACH(tsp, &kauth_scopes, ks_link) {
 		/* duplicate! */
 		if (strncmp(tsp->ks_identifier, identifier,
-		    strlen(tsp->ks_identifier) + 1) == 0) {
+		    strlen(tsp->ks_identifier)) == 0) {
 			KAUTH_SCOPEUNLOCK();
 			kfree_type(struct kauth_scope, sp);
 			return NULL;
@@ -223,7 +223,7 @@ kauth_register_scope(const char *identifier, kauth_scope_callback_t callback, vo
 restart:
 	TAILQ_FOREACH(klp, &kauth_dangling_listeners, kl_link) {
 		if (strncmp(klp->kl_identifier, sp->ks_identifier,
-		    strlen(klp->kl_identifier) + 1) == 0) {
+		    strlen(klp->kl_identifier)) == 0) {
 			/* found a match on the dangling listener list.  add it to the
 			 * the active scope.
 			 */
@@ -287,7 +287,7 @@ kauth_listen_scope(const char *identifier, kauth_scope_callback_t callback, void
 	KAUTH_SCOPELOCK();
 	TAILQ_FOREACH(sp, &kauth_scopes, ks_link) {
 		if (strncmp(sp->ks_identifier, identifier,
-		    strlen(sp->ks_identifier) + 1) == 0) {
+		    strlen(sp->ks_identifier)) == 0) {
 			/* scope exists, add it to scope listener table */
 			if (kauth_add_callback_to_scope(sp, klp) == 0) {
 				KAUTH_SCOPEUNLOCK();
