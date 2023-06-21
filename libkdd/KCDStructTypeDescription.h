@@ -31,7 +31,7 @@
 
 @interface KCDStructTypeDescription : KCDataType
 
-- (id)initWithType:(unsigned int)typeID withName:(NSString *)name;
+- (instancetype)initWithType:(unsigned int)typeID withName:(NSString *)name NS_DESIGNATED_INITIALIZER;
 
 - (void)addFieldBasicType:(KCDBasicTypeDescription *)fieldType;
 

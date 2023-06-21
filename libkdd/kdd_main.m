@@ -45,7 +45,7 @@ int main(int argc, char *const*argv) {
     if (0 == strcmp(argv[optind], "-")) {
         data = [[NSFileHandle fileHandleWithStandardInput] readDataToEndOfFile];
     } else {
-        data = [NSData dataWithContentsOfFile:[NSString stringWithUTF8String:argv[optind]]
+        data = [NSData dataWithContentsOfFile:@(argv[optind])
                                       options:NSDataReadingMappedIfSafe
                                         error:&error];
     }
@@ -67,7 +67,7 @@ int main(int argc, char *const*argv) {
         z_stream stream;
         bzero(&stream, sizeof(stream));
         stream.next_in = (void*) data.bytes;
-        stream.avail_in = data.length;
+        stream.avail_in = (uInt)data.length;
         stream.next_out = buffer;
         stream.avail_out = sizeof(buffer);
         inflateInit2(&stream, 16+MAX_WBITS);
@@ -118,7 +118,7 @@ int main(int argc, char *const*argv) {
         fwrite(plist.bytes, plist.length, 1, stdout);
 
     } else {
-        puts([[NSString stringWithFormat: @"%@", dict] UTF8String]);
+        puts([NSString stringWithFormat: @"%@", dict].UTF8String);
     }
 
 

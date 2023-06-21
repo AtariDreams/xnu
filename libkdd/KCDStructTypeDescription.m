@@ -45,7 +45,7 @@ KCDStructTypeDescription () {
 
 @implementation KCDStructTypeDescription
 
-- (id)initWithType:(unsigned int)typeID withName:(NSString *)name
+- (instancetype)initWithType:(unsigned int)typeID withName:(NSString *)name
 {
 	if ((self = [super init])) {
 		_typeID               = typeID;
@@ -91,7 +91,7 @@ KCDStructTypeDescription () {
         int i = 0;
         for (i = 0; i < elem_count; i++) {
             KCDBasicTypeDescription * tmpdsc = [[KCDBasicTypeDescription alloc] initWithKCTypeDesc:&fields_dsc[i]];
-            NSString *field_desc_str = [tmpdsc description];
+            NSString *field_desc_str = tmpdsc.description;
             
             [fields_array addObject:field_desc_str];
         }
@@ -130,7 +130,7 @@ KCDStructTypeDescription () {
 
 - (uint32_t)count
 {
-	return (uint32_t)[_fields count];
+	return (uint32_t)_fields.count;
 }
 
 - (unsigned int)typeID

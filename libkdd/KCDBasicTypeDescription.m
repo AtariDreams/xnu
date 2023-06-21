@@ -65,7 +65,7 @@ KCDBasicTypeDescription () {
 
 @implementation KCDBasicTypeDescription
 
-- (id)initWithKCTypeDesc:(kcdata_subtype_descriptor_t)sub_type_desc
+- (instancetype)initWithKCTypeDesc:(kcdata_subtype_descriptor_t)sub_type_desc
 {
 	_typeID = sub_type_desc->kcs_elem_type;
 	_count = kcs_get_elem_count(sub_type_desc);
@@ -103,12 +103,12 @@ KCDBasicTypeDescription () {
 	case KC_ST_CHAR: obj = [NSString stringWithFormat:@"%c", *(char *)data]; break;
 	case KC_ST_INT8: obj =   [NSNumber numberWithInt:read_unaligned(int8_t, data)]; break;
 	case KC_ST_UINT8: obj =  [NSNumber numberWithInt:read_unaligned(uint8_t, data)]; break;
-	case KC_ST_INT16: obj =  [NSNumber numberWithShort:read_unaligned(int16_t, data)]; break;
-	case KC_ST_UINT16: obj = [NSNumber numberWithUnsignedShort:read_unaligned(uint16_t, data)]; break;
-	case KC_ST_INT32: obj =  [NSNumber numberWithInt:read_unaligned(int32_t, data)]; break;
-	case KC_ST_UINT32: obj = [NSNumber numberWithUnsignedInt:read_unaligned(uint32_t, data)]; break;
-	case KC_ST_INT64: obj =  [NSNumber numberWithLongLong:read_unaligned(int64_t, data)]; break;
-	case KC_ST_UINT64: obj = [NSNumber numberWithUnsignedLongLong:read_unaligned(uint64_t, data)]; break;
+	case KC_ST_INT16: obj =  @(read_unaligned(int16_t, data)); break;
+	case KC_ST_UINT16: obj = @(read_unaligned(uint16_t, data)); break;
+	case KC_ST_INT32: obj =  @(read_unaligned(int32_t, data)); break;
+	case KC_ST_UINT32: obj = @(read_unaligned(uint32_t, data)); break;
+	case KC_ST_INT64: obj =  @(read_unaligned(int64_t, data)); break;
+	case KC_ST_UINT64: obj = @(read_unaligned(uint64_t, data)); break;
 
 	default: obj = @"<Unknown error occurred>"; break;
 	}

@@ -131,7 +131,7 @@ getKCDataTypeForID(uint32_t typeID)
 	  }
 	});
 
-	NSNumber * type = [NSNumber numberWithUnsignedInt:typeID];
+	NSNumber * type = @(typeID);
 	if (!knownTypes[type]) {
 		if (typeID == KCDATA_TYPE_NESTED_KCDATA) {
 			knownTypes[type] = [[KCDEmbeddedBufferDescription alloc] init];
@@ -162,7 +162,7 @@ setKCDataTypeForID(uint32_t newTypeID, KCDataType *newTypeObj) {
         }
     });
     
-    NSNumber * type = [NSNumber numberWithUnsignedInt:newTypeID];
+    NSNumber * type = @(newTypeID);
 
     if (!knownTypes[type]) {
         knownTypes[type] = newTypeObj;
@@ -212,7 +212,7 @@ parseKCDataArray(kcdata_iter_t iter, NSError **error)
 		}
 		if ([datatype shouldMergeData]) {
 			assert([tmpdict count] == 1);
-			[arr addObject: [tmpdict allValues][0]];
+			[arr addObject: tmpdict.allValues[0]];
 		} else {
 			[arr addObject:tmpdict];
 		}

@@ -32,7 +32,7 @@
 
 @interface KCDBasicTypeDescription : KCDataType
 
-- (id)initWithKCTypeDesc:(kcdata_subtype_descriptor_t)sub_type_desc;
+- (instancetype)initWithKCTypeDesc:(kcdata_subtype_descriptor_t)sub_type_desc;
 
 /*
  * Restricted. Only for internal use

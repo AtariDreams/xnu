@@ -747,7 +747,6 @@ kcdata_get_typedescription(unsigned type_id, uint8_t * buffer, uint32_t buffer_s
 	}
 
 	case TASK_CRASHINFO_EXCEPTION_CODES: {
-		i = 0;
 		char codenum[100];
 		for (i = 0; i < EXCEPTION_CODE_MAX; i++) {
 			snprintf(codenum, sizeof(codenum), "code_%d", i);
